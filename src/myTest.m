@@ -78,6 +78,21 @@ roots(p)
 
 % Ejercicio 6
 
+printf("Ejercicio 6 \n \n ")
+
+A = [1 2 3;4 5 6;7 8 9]
+
+A
+
+B = A'
+
+B
+
+C = [-3.2,5,7.4,6;4,17,-1.3,2.1;5.9,-6,0,4.5]
+
+C
+
+mat = C'
 % Ejercicio 7
 
 printf("Ejercicio 7 \n \n");
@@ -91,16 +106,38 @@ y = zeros(1,n)
 a = x(1:m+1)
 y(1:m+1) = sin(2*pi*a)
 y(2*m+1:-1:m+2) = y(1:m)
-% y(2*m+2:n) = -y(2:2*m);
+y(2*m+2:n) = -y(1:2*m);
 
 % Ejercicio 8
 
 printf("Ejercicio 8 \n \n ")
 
 function [y1] = myFunction2(x1)
-    y1 = (((x1 + 1) / (x1 ^ 2 + x1 +1 )) ^ 6) * (cos(x1) + 3)
+    y1 = (((x1 + 1)./ (x1 .^ 2 + x1 +1 )) .^ 6).* (cos(x1) + 3)
 end;
 
-hold on
 plot(x,y)
+
+xF = (0:0.01:2);
+yF = myFunction2(xF);
+
+%plot(xF,yF);
+
+clearvars
+
+function [y1, y2] = myResolvente( a, b, c )
+    y1 = ( -b + sqrt(b^2 - 4 * a * c))/ ( 2 * a);
+    y2 = ( -b - sqrt(b^2 - 4 * a * c))/ ( 2 * a);
+end;
+
+x=[-1 0 1.5 2]; y=[3 2 2 0]; plot(x,y)
+
+plot(x,y,'o')
+
+x=linspace(0,2*pi,201);
+y=sin(x);
+plot(x,y)
+hold on
+z=cos(x);
+plot(x,z,'k-.')
 hold off
