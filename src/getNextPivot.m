@@ -1,11 +1,9 @@
-function pivotPos = getNextPivot(column)
+function pivotPos = getNextPivot(column,iniPos)
    n = length(column);
-   biggest = column(1,1);
-   for i = 1 : n
-     aux = column(i,1);
-     if aux < biggest
-       pivotPos = i;
-       biggest = column(i,1);
+   pivotPos = iniPos;
+   biggest = column(iniPos);
+   [ a , b ] = max(column(iniPos:n));
+     if a > column(iniPos)
+       pivotPos = b + iniPos - 1;
      endif
-   endfor
 end

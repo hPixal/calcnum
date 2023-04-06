@@ -1,14 +1,14 @@
 clear all; close all; clc;
 %Este codigo ejecuta eliminacion gaussiana con pivoteo parcial
 function finalMatrix = gaussianEliminationPPivoting(initialMatrix,equalVector)
-    mLength = length(initialMatrix)
-    finalMatrix = [ initialMatrix equalVector ]
+    mLength = length(initialMatrix);
+    finalMatrix = [ initialMatrix equalVector ];
     for i = 1 : mLength-1 % es mlenght menos 1 porque no hace falta hacer nada
                           % en la ultima fila
 
-      columna = finalMatrix[:,i];                       %
-      pos = getNextPivot(columna);                      % pivoteo
-      finalMatrix([i pos], :) = finalMatrix([pos i], :) %
+      columna = finalMatrix( : , i );                    %
+      pos = getNextPivot(columna,i);                      % pivoteo
+      finalMatrix([i pos], :) = finalMatrix([pos i], :); %
 
       base = initialMatrix(i,i); % tomo las diagonales que son las que me
                                  % interesan
