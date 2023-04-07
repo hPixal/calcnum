@@ -1,15 +1,8 @@
-clear all; close all; clc;
-
-%En este algoritmo voy a hacer descomposicion LU con pivoteo mediante el algori
-%tmo de Doolittle
-
-function [finalL , finalU ] = doolittle_p(initialMatrix)
+function finalMatrix = gauss(initialMatrix , initialVector)
   myLength = length(initialMatrix); % tamano original
-  finalU = initialMatrix ; % ampliacion de la matriz original
-  finalL = eye(myLength) ; % matriz identidad
+  finalMatrix = [initialMatrix initialVector]; % ampliacion de la matriz original
   indexVector = 1:myLength; % crea un vector tipo [ 1 2 3 ... myLength ]
   epsilon = 1e-9; % epsilon de la maquina
-
 
   for i = 1 : myLength - 1 % -1 porque el ultimo ya estará formato triangular superior
 
@@ -17,7 +10,7 @@ function [finalL , finalU ] = doolittle_p(initialMatrix)
 
     %Pivoteo
 
-    [valorMaximo,posicion] = max(abs(finalU(indexVector(i:myLength),myLength)));
+    [valorMaximo,posicion] = max(abs(finalMatrix(indexVector(i:myLength),myLength)));
     % ^ Esto lo que hace es fijarse cual es el valor maximo abajo del elemento seleccionado de la diagonal
     % y donde esta su posicion. se invoca con el indexVector porque al pivotar iran cambiando de lugar los renglones
     % y indexVector trackea a donde se movio cada uno para que sepa donde leer.
@@ -39,14 +32,26 @@ function [finalL , finalU ] = doolittle_p(initialMatrix)
 
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    % Divido los que estan abajo del elemento que agarramos de la diagonal, es
+    % decir, hacemos un vector columna con el rango (i+1:myLength,i) y lo
+    % dividimos por el elemento de la diagonal initialMatrix(i,i)
 
+    columnVector = finalMatrix(indexVector(i+1:myLength),i)/finalMatrix(indexVector(i),i);% <- diagonal
+    rowVector = finalMatrix(indexVector(i),i+1:myLength+1);
+    finalMatrix(indexVector(i+1:myLength),i) = 0; %hago los ceros
 
-   finalU(indexVector(i),i:myLength) = finalU(indexVector(i),i:myLength) / finalU(indexVector(i),i); % divido las filas del
-                                                                                                   % pivote por la base pivotal
+    % Ahora multiplico ese vector por el vector fila conformado por el rango
+    % (i,i+1:myLength+1), osea los elementos que le siguen en fila luego del
+    % elemento de la diagonal que estamos tomando. Esto genera una matriz de
+    % tamaño (i+1:myLength)x(i+1:myLength+1) que la usaremos para restar.
+    % NOTA: el +1 en las filas es porque se amplio la matriz original.
 
-   finalL(i:myLength,i) = finalU(indexVector(i),i:myLength) / finalU(indexVector(i),i); %descomposicion
+    minusMatrix = columnVector*rowVector % matriz de resta con tamaño
+                                         % (i+1:myLength)x(i+1:myLength+1)
 
-   finalU(indexVector(i+1:myLength),i:myLength) = finalU(indexVector(i+1:myLength),i:myLength) - finalU(indexVector(i+1: myLength),i) * finalU(indexVector(i),i:myLength);
+    finalMatrix(indexVector(i+1:myLength),i+1:myLength+1) -= minusMatrix; % Las dos matrices
+                                                             % son del mimsmo
+                                                             % tamaño
  endfor
+ finalMatrix = sustAtras(finalMatrix,indexVector);
 end
-
