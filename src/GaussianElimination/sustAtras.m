@@ -1,4 +1,4 @@
-function [finalMatrix] = sustAtras(initialMatrix,indexVector)
+function [finalMatrix , indexVector] = sustAtrasNO_I(initialMatrix , indexVector)
 % proceso de sustitucion hacia atrás vectorizada
 myLength = length(initialMatrix)
 finalVector = zeros(myLength-1,1); % inicializamos la solucion
@@ -10,7 +10,7 @@ finalVector(indexVector(myLength-1)) = equalVector(indexVector(myLength-1))/init
                % que el paso es 1 entonces el siguiente numero es 50 y
                % deberia ser 48 y no sigue
 
-    finalVector(indexVector(i)) = (equalVector(indexVector(i)) - initialMatrix(indexVector(i),i+1:myLength-1)*finalVector(indexVector(i+1:myLength-1)))/initialMatrix(indexVector(i),i);
+    finalVector(i) = (equalVector(indexVector(i)) - initialMatrix(indexVector(i),i+1:myLength-1)*finalVector(indexVector(i+1:myLength-1)))/initialMatrix(indexVector(i),i);
   endfor % for i
   finalMatrix = [ eye(myLength-1) finalVector]
 end
