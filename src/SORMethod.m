@@ -1,6 +1,5 @@
-%Este algortimo requiere de una matriz diagonalmente dominante para funcionar y asegurar convergencia. Para otro tipo de matrices puede fallar
 clear all; close all; clc;
-function [finalVector] = myGauss_Seidel(initialMatrix, equalVector, maxIt , tolerance , x0)
+function [finalVector] = SORMethod(initialMatrix, equalVector, maxIt , tolerance , x0 , relaxation)
   myLength = length(initialMatrix);
   myMatrix = [ initialMatrix equalVector ];
   finalVector = x0;
@@ -12,7 +11,7 @@ function [finalVector] = myGauss_Seidel(initialMatrix, equalVector, maxIt , tole
   while (count < maxIt)
     lastIt = finalVector;
     for i = 1 : myLength
-      finalVector(i,1) = (equalVector(i,1) - initialMatrix(i,i+1: myLength)*finalVector(i+1 : myLength,1) - initialMatrix(i,1:i-1)*finalVector(1:i-1,1))/initialMatrix(i,i);
+      finalVector(i,1) = (1-relaxation)*finalVector(i,1)+ relaxation*(equalVector(i,1) - initialMatrix(i,i+1: myLength)*finalVector(i+1 : myLength,1) - initialMatrix(i,1:i-1)*finalVector(1:i-1,1))/initialMatrix(i,i);
     endfor
     % lo que cambia con Jacobi es que uso datos que voy calculando en la misma iteracion, por lo tanto la convergencia (si es que converge, es más rápida).
     difference = abs( norm(finalVector) - norm(lastIt));
