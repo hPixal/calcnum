@@ -26,7 +26,7 @@ function finalVector = myJacobi(initialMatrix,equalVector, maxIteration, toleran
     %norm(lastKnownValue(1:myLength-1,1))
     %norm(iterationBefore)
 
-    diffLastIT = abs(norm(iterationBefore) - norm(lastKnownValue(1:myLength-1,1))) % resto las normas de los vectores de ambas iteraciones (actual y anterior)
+    diffLastIT = norm(iterationBefore - lastKnownValue(1:myLength-1,1)) % resto las normas de los vectores de ambas iteraciones (actual y anterior)
     finalVector = lastKnownValue(1:myLength-1);
       if(abs(diffLastIT) < tolerance)
          break

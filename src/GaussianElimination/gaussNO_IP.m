@@ -7,7 +7,7 @@ function [finalMatrix]  = gaussNO_IP(initialMatrix,equalVector)
     finalMatrix = [ initialMatrix equalVector ] %Expando la matriz
 
 
-    for i = 1 : myLength-1 % es mlenght menos 1 porque no hace falta hacer nada
+    for i = 1 : myLength-1 % es mLength menos 1 porque no hace falta hacer nada
                           % en la ultima fila
 
     % Divido los que estan abajo del elemento que agarramos de la diagonal, es

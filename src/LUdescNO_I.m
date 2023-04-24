@@ -8,7 +8,7 @@ function [finalL,finalU]  = LUdescNO_I(initialMatrix)
     finalL = eye(myLength); %Inicializo L
     epsilon = 1e-9; % epsilon de la maquina
 
-    for i = 1 : myLength-1 % es mlenght menos 1 porque no hace falta hacer nada
+    for i = 1 : myLength-1 % es mLength menos 1 porque no hace falta hacer nada
                           % en la ultima fila
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

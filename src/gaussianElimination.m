@@ -4,7 +4,7 @@ clear all; close all; clc;
 function finalMatrix = gaussianElimination(initialMatrix,equalVector)
     mLength = length(initialMatrix)
     finalMatrix = [ initialMatrix equalVector ]
-    for i = 1 : mLength-1 % es mlenght menos 1 porque no hace falta hacer nada
+    for i = 1 : mLength-1 % es mLength menos 1 porque no hace falta hacer nada
                           % en la ultima fila
 
       base = initialMatrix(i,i); % tomo las diagonales que son las que me
