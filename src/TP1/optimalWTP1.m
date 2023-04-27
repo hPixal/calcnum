@@ -1,4 +1,4 @@
-function w = optimalWTP1(initialMatrix)
+function w = optimalWTP1(initialMatrix)  %MUST BE POSITIVE DEFINED AND SYMETRICAL !
   [L D U]=LDUdescTP1(initialMatrix);
   L
   D
