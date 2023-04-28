@@ -1,4 +1,4 @@
-function [finalVector,iteration,time,restSOR] = SORMethodTP1(initialMatrix, equalVector, maxIt , tolerance , x0 , relaxation)
+function [finalVector,iteration,time,restSOR] = SORMethod(initialMatrix, equalVector, maxIt , tolerance , x0 , relaxation)
   tic();
   iteration = 1;
   myLength = length(initialMatrix);

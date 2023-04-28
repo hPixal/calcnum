@@ -1,5 +1,5 @@
 %Este algortimo requiere de una matriz diagonalmente dominante para funcionar y asegurar convergencia. Para otro tipo de matrices puede fallar
-function [finalVector,iteration,time,restSOR] = myGauss_SeidelTP1(initialMatrix, equalVector, maxIt , tolerance , x0)
+function [finalVector,iteration,time,restSOR] = gauss_Seidel(initialMatrix, equalVector, maxIt , tolerance , x0)
   tic;
   iteration = 1;
   myLength = length(initialMatrix);

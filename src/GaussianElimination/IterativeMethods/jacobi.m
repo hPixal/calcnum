@@ -1,4 +1,4 @@
-function [finalVector,iteration,time,restJacobi] = myJacobiTP1(initialMatrix, equalVector, initialVector, maxIt, tolerance)
+function [finalVector,iteration,time,restJacobi] = jacobi(initialMatrix, equalVector, initialVector, maxIt, tolerance)
   tic();
 
   myLength=length(equalVector);
