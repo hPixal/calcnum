@@ -1,4 +1,4 @@
-function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX,tolY)
+function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX)
   it = 1;
   tic();
 
@@ -10,7 +10,7 @@ function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX,tolY)
 
     while it < maxIt
       point = x0 + (x1-x0)/2;
-      if abs(f_x(point)) < tolY || (x1-x0)/2 < tolX
+      if (x1-x0)/2 < tolX
         break;
       endif
 
@@ -23,4 +23,7 @@ function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX,tolY)
       it = it + 1;
     endwhile
     t = toc();
+    plotFunction(f_x,x0-5,x1+5,100,1)
+    plotDots([ f_x(point) point ], 1 );
+    
 end

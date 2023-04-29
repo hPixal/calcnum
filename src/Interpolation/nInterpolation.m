@@ -81,9 +81,9 @@ function [finalLagrange, it, time] = nInterpolation(dotsVector)
     it += 1;
   endfor
 
+  t = toc();
   % this is for plotting porpuses, can be ignored
   plotPol(finalLagrange,x1,x2,1,2);
   plotDots(dotsVector,2)
   plotDots(dotsVector,1)
-  t = toc();
 end
