@@ -1,10 +1,11 @@
-clear all; close all; clc;
-function [finalMatrix]  = gaussNO_IP(initialMatrix,equalVector)
+function [finalMatrix,it,t]  = gaussNO_IP(initialMatrix,equalVector)
 % Este codigo ejecuta eliminacion gaussiana vectorizada sin indexado y sin
 % pivoteo. No elimina los errores de redondeo de la maquina. FUNCIONA
 
-    myLength = length(initialMatrix)
-    finalMatrix = [ initialMatrix equalVector ] %Expando la matriz
+    tic();
+    it = 1;
+    myLength = length(initialMatrix);
+    finalMatrix = [ initialMatrix equalVector ]; %Expando la matriz
 
 
     for i = 1 : myLength-1 % es mLength menos 1 porque no hace falta hacer nada
@@ -24,11 +25,15 @@ function [finalMatrix]  = gaussNO_IP(initialMatrix,equalVector)
     % tamaño (i+1:myLength)x(i+1:myLength+1) que la usaremos para restar.
     % NOTA: el +1 en las filas es porque se amplio la matriz original.
 
-    minusMatrix = columnVector*rowVector % matriz de resta con tamaño
+    minusMatrix = columnVector*rowVector; % matriz de resta con tamaño
                                          % (i+1:myLength)x(i+1:myLength+1)
 
     finalMatrix(i+1:myLength,i+1:myLength+1) -= minusMatrix; % Las dos matrices
                                                              % son del mimsmo
                                                              % tamaño
+    it++;
     endfor
+
+    [finalMatrix,it] = sustAtrasNO_I(finalMatrix,it);
+    t = toc();
 end

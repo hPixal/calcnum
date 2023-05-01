@@ -1,7 +1,8 @@
-function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX,tolY)
+function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX)
   it = 1;
   tic();
 
+  point = 0.1;
   fa = f_x(x0);
   fb = f_x(x1);
   if sign(fa)*sign(fb) > 0
@@ -10,7 +11,7 @@ function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX,tolY)
 
     while it < maxIt
       point = x0 + (x1-x0)/2;
-      if abs(f_x(point)) < tolY || (x1-x0)/2 < tolX
+      if  (x1-x0)/2 < tolX
         break;
       endif
 

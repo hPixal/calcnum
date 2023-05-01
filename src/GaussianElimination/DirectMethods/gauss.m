@@ -1,9 +1,10 @@
-function finalMatrix = gauss(initialMatrix , initialVector)
+function [finalMatrix,indexVector,it] = gauss(initialMatrix , initialVector)
   myLength = length(initialMatrix); % tamano original
   finalMatrix = [initialMatrix initialVector]; % ampliacion de la matriz original
   indexVector = 1:myLength; % crea un vector tipo [ 1 2 3 ... myLength ]
   epsilon = 1e-9; % epsilon de la maquina
-
+  P = eye(myLength);
+  it = 1;
   for i = 1 : myLength - 1 % -1 porque el ultimo ya estará formato triangular superior
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,9 +26,10 @@ function finalMatrix = gauss(initialMatrix , initialVector)
                                  % pasabamos que tiene distintas medidas segun i (el menos 1 es por la base 1)
 
    if posicion != i
-     indexVector([posicion i]) = indexVector([i posicion]); % Cambia de lugar i con la posicion, es decir
+     indexVector(:,[i,posicion]) = indexVector(:,[posicion,i]); % Cambia de lugar i con la posicion, es decir
                                                         % [ M(1) M(2) .. M(pos) .. M(pos2) ] =>
                                                         % [ M(1) M(2) .. M(pos2) .. M(pos) ]
+     P([i,posicion],:) = P([posicion,i],:);
    endif
 
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,12 +48,13 @@ function finalMatrix = gauss(initialMatrix , initialVector)
     % tamaño (i+1:myLength)x(i+1:myLength+1) que la usaremos para restar.
     % NOTA: el +1 en las filas es porque se amplio la matriz original.
 
-    minusMatrix = columnVector*rowVector % matriz de resta con tamaño
+    minusMatrix = columnVector*rowVector; % matriz de resta con tamaño
                                          % (i+1:myLength)x(i+1:myLength+1)
 
     finalMatrix(indexVector(i+1:myLength),i+1:myLength+1) -= minusMatrix; % Las dos matrices
                                                              % son del mimsmo
                                                              % tamaño
+    it++;
  endfor
- finalMatrix = sustAtras(finalMatrix,indexVector);
+ finalMatrix = sustAtras(finalMatrix,indexVector,it);
 end

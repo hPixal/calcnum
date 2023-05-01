@@ -1,10 +1,10 @@
-%clear all; close all; clc;
-function [finalMatrix]  = gaussNO_I(initialMatrix,equalVector)
+function [finalMatrix,it,t]  = gaussNO_I(initialMatrix,equalVector)
 % Este codigo ejecuta eliminacion gaussiana vectorizada sin indexado y sin
 % pivoteo. No elimina los errores de redondeo de la maquina. FUNCIONA
-
-    myLength = length(initialMatrix)
-    finalMatrix = [ initialMatrix equalVector ] %Expando la matriz
+    tic();
+    it = 1;
+    myLength = length(initialMatrix);
+    finalMatrix = [ initialMatrix equalVector ]; %Expando la matriz
     epsilon = 1e-9; % epsilon de la maquina
 
     for i = 1 : myLength-1 % es mLength menos 1 porque no hace falta hacer nada
@@ -28,9 +28,9 @@ function [finalMatrix]  = gaussNO_I(initialMatrix,equalVector)
                                  % pasabamos que tiene distintas medidas segun i (el menos 1 es por la base 1)
 
     if posicion != i
-      finalMatrix([posicion i]) = finalMatrix([i posicion]); % Cambia de lugar i con la posicion, es decir
-                                                             % [ M(1) M(2) .. M(pos) .. M(pos2) ] =>
-                                                             % [ M(1) M(2) .. M(pos2) .. M(pos) ]
+      finalMatrix([i,posicion],:) = finalMatrix([posicion,i],:); % Cambia de lugar i con la posicion, es decir
+                                                                 % [ M(1) M(2) .. M(pos) .. M(pos2) ] =>
+                                                                 % [ M(1) M(2) .. M(pos2) .. M(pos) ]
     endif
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,11 +49,15 @@ function [finalMatrix]  = gaussNO_I(initialMatrix,equalVector)
     % tamaño (i+1:myLength)x(i+1:myLength+1) que la usaremos para restar.
     % NOTA: el +1 en las filas es porque se amplio la matriz original.
 
-    minusMatrix = columnVector*rowVector % matriz de resta con tamaño
+    minusMatrix = columnVector*rowVector; % matriz de resta con tamaño
                                          % (i+1:myLength)x(i+1:myLength+1)
 
     finalMatrix(i+1:myLength,i+1:myLength+1) -= minusMatrix; % Las dos matrices
                                                              % son del mimsmo
                                                              % tamaño
+    it++;
     endfor
+    
+    [finalMatrix,it] = sustAtrasNO_I(finalMatrix,it);
+    t = toc();
 end

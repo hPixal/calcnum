@@ -1,22 +1,30 @@
-clear all; close all; clc;
-function [finalMatrix]  = gaussNO_IPV(initialMatrix,equalVector)
+function [finalMatrix,it,t]  = gaussNO_IPV(initialMatrix,equalVector)
 %Este codigo ejecuta eliminacion gaussiana sin pivoteo sin indexado y no vectorizado
 %y sin eliminar los errores de redondeo de la maquina (ANDA)
-    mLength = length(initialMatrix)
-    finalMatrix = [ initialMatrix equalVector ]
-    for i = 1 : mLength-1 % es mLength menos 1 porque no hace falta hacer nada
-                          % en la ultima fila
+    tic();
+    mLength = length(initialMatrix);
+    initialMatrix = [ initialMatrix equalVector ];
+    it = 1;
 
-      base = initialMatrix(i,i); % tomo las diagonales que son las que me
-                                 % interesan
-      for y = i+1 : mLength-1
-        multiplier = finalMatrix(i+1,i)/base; % tomo el que este justo debajo
-                                               % m*b = A(i,i+1) = 0
-        finalMatrix(y,i) = 0; % Ya se que va a ser cero, asi que optimizamos
-        % ahora voy a arrancar a restar toda la fila
-        for x = i+1 : length(finalMatrix) % mLength + 1 por ampliada
-          finalMatrix(y,x) = finalMatrix(y,x) - multiplier * finalMatrix(i,x);
+    for dgn = 1 : mLength-1  % This for is called dgn because it will travel 
+                             % the matrix diagonally
+      base = initialMatrix(dgn,dgn);
+
+      for dwd = dgn+1 : mLength % This for is called fwd because it will travel
+                                % the elements downward the diagonal element
+
+        coef = (-1)*initialMatrix(dwd,dgn)/base; %  | a(2,1) + coef* a(1,1) = 0 | then | coef = - a(2,1)/a(1,1) |
+        initialMatrix(dwd,dgn) = 0; % because of the operation above, we already know that this will equal 0.
+
+        for fwd = dgn+1 : mLength+1 % This for is called fwd because it will travel
+                                  % the elements forward the diagonal element
+            initialMatrix(dwd,fwd) = initialMatrix(dwd,fwd) + coef*initialMatrix(dgn,fwd);
+            it++;
         endfor
-       endfor
+        it++;
+      endfor
+      it++;
     endfor
+    [finalMatrix,it] = sustAtrasNO_IV(initialMatrix,it);
+    t = toc();
 end
