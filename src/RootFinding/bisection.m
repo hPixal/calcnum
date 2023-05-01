@@ -11,11 +11,7 @@ function [point,it,t] = bisection(f_x,x0,x1,maxIt,tolX)
 
     while it < maxIt
       point = x0 + (x1-x0)/2;
-<<<<<<< HEAD
       if  (x1-x0)/2 < tolX
-=======
-      if (x1-x0)/2 < tolX
->>>>>>> 18b3225e6f0c4134648f014628081aadbc4752c8
         break;
       endif
 
