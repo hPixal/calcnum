@@ -1,4 +1,11 @@
 # MÉTODOS DE NO LINEALES:
+
+## Formas de detener el proceso iterativo 
+
+ * || p_n - p_(n-1) || diferencia entre el punto anterior encontrado end x y el actual.
+ * || p_n - p_(n-1) || / || p_n || error relativo
+ * || f(p_n) - f(p_(n-1)) || como el primero pero en relacion al eje y.
+ 
 ## Bisección:
 Siempre converge globalmente pero lineal (lento).
 
