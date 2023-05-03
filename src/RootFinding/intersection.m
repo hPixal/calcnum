@@ -11,7 +11,7 @@ function [point,it,t] = intersection(f_x,g_x,tolX,maxIt)
         plotFunction(f_x,x0,x1,100,1)
         plotFunction(g_x,x0,x1,100,1)
 
-        prompt = "Do you to proceed and calculate the intersection? y/n [y]: ";
+        prompt = "Do you want to proceed and calculate the intersection? y/n [y]: ";
         proceed = input(prompt,"s");
         if isempty(proceed)
             proceed = 'y';
