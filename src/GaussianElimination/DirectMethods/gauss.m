@@ -11,7 +11,7 @@ function [finalMatrix,indexVector,it] = gauss(initialMatrix , initialVector)
 
     %Pivoteo
 
-    [valorMaximo,posicion] = max(abs(finalMatrix(indexVector(i:myLength),myLength)));
+    [valorMaximo,posicion] = max(abs(finalMatrix(indexVector(i:myLength),i)));
     % ^ Esto lo que hace es fijarse cual es el valor maximo abajo del elemento seleccionado de la diagonal
     % y donde esta su posicion. se invoca con el indexVector porque al pivotar iran cambiando de lugar los renglones
     % y indexVector trackea a donde se movio cada uno para que sepa donde leer.
@@ -57,4 +57,5 @@ function [finalMatrix,indexVector,it] = gauss(initialMatrix , initialVector)
     it++;
  endfor
  finalMatrix = sustAtras(finalMatrix,indexVector,it);
+ indexVector
 end
