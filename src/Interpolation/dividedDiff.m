@@ -7,7 +7,7 @@ function endPol = dividedDiff(dots)
     % for example dots=[ 2 1 ; -3 2 ; 5 3 ; 3 4 ];
     n = size(dots,1);
 
-    x1 = dots(1,2);               %
+    x1 = dots(1,2);
     x2 = dots(n,2);
 
     pols(1:n) = {1};
@@ -28,10 +28,10 @@ function endPol = dividedDiff(dots)
         pols{i-1} = [zeros(1, max(0, numel(pols{i})-numel(pols{i-1}))), pols{i-1}];
         endPol = endPol+pols{i-1};
     endfor
-     % - THIS IS FOR PLOTTING PORPUSES - %
-    plotPol(endPol,x1,x2,1,2);        %
-    plotDots(dots,2);             %
-    plotDots(dots,1);             %
+    % - THIS IS FOR PLOTTING PORPUSES - %
+    plotPol(endPol,x1,x2,1,2);          %
+    plotDots(dots,2);                   %
+    plotDots(dots,1);                   %
     % --------------------------------- %
 
 end

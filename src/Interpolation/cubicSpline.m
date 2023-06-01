@@ -1,4 +1,5 @@
-function [a,b,c,d]=cubicSpline(dotsVector)
+function [a,b,c,d,stackOfFunctions]=cubicSpline(dotsVector)
+    %my natural cubic spline
     dots(1,:) = dotsVector(:,1)';
     dots(2,:) = dotsVector(:,2)';
     n=length(dots(1,:));
@@ -38,6 +39,7 @@ function [a,b,c,d]=cubicSpline(dotsVector)
     for i=1:n-1;  
         f_x= @(x) a(i)+b(i)*(x-dots(1,i))+c(i)*(x-dots(1,i)).^2+d(i)*(x-dots(1,i)).^3; 
         plotFunction(f_x,dots(1,i),dots(1,i+1),100,1); 
+        stackOfFunctions(i) = f_x;
     end
     plotDots([dotsVector(:,2) dotsVector(:,1)],1);
 end
