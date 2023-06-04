@@ -17,9 +17,9 @@ function bfit = minSquares(dots)
 
     bfit = [_m _b];
 
-    % - THIS IS FOR PLOTTING PORPUSES - %
+    % --- THIS IS FOR PLOTTING PORPUSES --- %
     plotPol(bfit,dots(1,2),dots(n,2),1,2);  %
-    plotDots(dots,2);                   %
-    % --------------------------------- %
+    plotDots(dots,2);                       %
+    % ------------------------------------- %
 
 end

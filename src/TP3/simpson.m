@@ -7,12 +7,11 @@ function [finalVal,it,t,r] = simpson(f_x,a,b,tol,maxIt)
         n = 2*i;
         w = simpsonWeight(n);
         dx = abs(a-b)/n;
-        it2 = 0;
-        it++;
+        it = 0;
+
         for j = a:dx:b
-            it2++;
             it++;
-            finalVal = finalVal + f_x(j)*w(it2);
+            finalVal = finalVal + f_x(j)*w(it);
         endfor
         finalVal = finalVal * dx/3;
         if abs(finalVal - last) < tol
@@ -20,6 +19,5 @@ function [finalVal,it,t,r] = simpson(f_x,a,b,tol,maxIt)
         endif
         last = finalVal;
     endfor
-    it
     t = toc();
 end
