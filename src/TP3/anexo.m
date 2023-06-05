@@ -223,8 +223,9 @@ function intvalue = tp3()
 
     longarc = @(t) sqrt(dX(t).^2 + dY(t).^2)
     format long;
-    intvalue = simpson(longarc,0,6,0.0001,1000);
+    intvalue = intNCcompuesta(longarc,0,6,6,19);
 end
+
 
 function w = pesosNC(n)
 % function w = pesosNC(n)
