@@ -3,7 +3,7 @@
 %%Title: Enscript Output
 %%For: Nahuel Gareis,,none,3435222996
 %%Creator: GNU Enscript 1.6.6
-%%CreationDate: Mon Jun  5 08:22:08 2023
+%%CreationDate: Wed Jun  7 12:57:53 2023
 %%Orientation: Landscape
 %%Pages: (atend)
 %%DocumentMedia: A4 595 842 0 () ()
@@ -508,8 +508,8 @@ _S
 /ftail (anexo.m) def
 % User defined strings:
 /pagenumstr (1) def
-/moddatestr (06/05/23) def
-/modtimestr (08:21:53) def
+/moddatestr (06/07/23) def
+/modtimestr (12:56:00) def
 /user_header_p false def
 /user_footer_p false def
 %%EndPageSetup
@@ -1728,8 +1728,8 @@ _S
 /ftail (anexo.m) def
 % User defined strings:
 /pagenumstr (2) def
-/moddatestr (06/05/23) def
-/modtimestr (08:21:53) def
+/moddatestr (06/07/23) def
+/modtimestr (12:56:00) def
 /user_header_p false def
 /user_footer_p false def
 %%EndPageSetup
@@ -2676,7 +2676,23 @@ do_header
 /F-gs-font 7 7 SF
 0 setgray
 529 229 M
-(\(dX\(t\).^2 + dY\(t\).^2\)) s
+(\() s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+533.2 229 M
+(pow2) s
+/F-gs-font 7 7 SF
+0 setgray
+550 229 M
+(\(dX\(t\)\) + ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+592 229 M
+(pow2) s
+/F-gs-font 7 7 SF
+0 setgray
+608.8 229 M
+(\(dY\(t\)\)\);) s
 411.4 221 M (225:) s
 432.4 221 M
 (    ) s
@@ -2690,7 +2706,7 @@ do_header
 ( long;) s
 411.4 213 M (226:) s
 432.4 213 M
-(    intvalue = intNCcompuesta\(longarc,0,6,6,19\);) s
+(    intvalue = intNCcompuesta\(longarc,0,6,60000,3\);) s
 411.4 205 M (227:) s
 /Courier-Bold 7 7 SUF
 0.627451 0.12549 0.941176 setrgbcolor
@@ -2908,8 +2924,8 @@ _S
 /ftail (anexo.m) def
 % User defined strings:
 /pagenumstr (3) def
-/moddatestr (06/05/23) def
-/modtimestr (08:21:53) def
+/moddatestr (06/07/23) def
+/modtimestr (12:56:00) def
 /user_header_p false def
 /user_footer_p false def
 %%EndPageSetup

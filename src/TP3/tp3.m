@@ -21,7 +21,7 @@ function intvalue = tp3()
     line([0 2],[0 0],'color','g')
     plot(plotX,plotY);
 
-    longarc = @(t) sqrt(dX(t).^2 + dY(t).^2)
+    longarc = @(t) sqrt(pow2(dX(t)) + pow2(dY(t)));
     format long;
-    intvalue = intNCcompuesta(longarc,0,6,6,19);
+    intvalue = intNCcompuesta(longarc,0,6,240000,3);
 end
