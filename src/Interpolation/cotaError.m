@@ -4,6 +4,6 @@ function cota = cotaError(f_x,pol,x0,x1,div)
     m = max(abs(f_x(vals)));
     cota = (m/((length(vals) +1)!));
     for i = 1 : length(vals)
-        cota = cota*abs(x-vals(i));
+        cota = cota*abs(polyval(pol,vals(i)));
     endfor
 end

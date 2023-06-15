@@ -221,9 +221,20 @@ function intvalue = tp3()
     line([0 2],[0 0],'color','g')
     plot(plotX,plotY);
 
-    longarc = @(t) sqrt(pow2(dX(t)) + pow2(dY(t)));
+    longarc = @(t) sqrt(dX(t).^2 + dY(t).^2);
     format long;
-    intvalue = intNCcompuesta(longarc,0,6,60000,3);
+    last= 1; intvalue=0;
+    count = 10;
+    while true
+        count = 2*count;
+        last = intNCcompuesta(longarc,0,6,count,2);
+        count++;
+        intvalue = intNCcompuesta(longarc,0,6,count,2);
+        if(abs(last-intvalue) < 1e-6)
+          break;
+        endif
+    endwhile
+    intvalue;
 end
 
 

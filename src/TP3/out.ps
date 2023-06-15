@@ -3,7 +3,7 @@
 %%Title: Enscript Output
 %%For: Nahuel Gareis,,none,3435222996
 %%Creator: GNU Enscript 1.6.6
-%%CreationDate: Wed Jun  7 12:57:53 2023
+%%CreationDate: Thu Jun  8 13:26:08 2023
 %%Orientation: Landscape
 %%Pages: (atend)
 %%DocumentMedia: A4 595 842 0 () ()
@@ -508,8 +508,8 @@ _S
 /ftail (anexo.m) def
 % User defined strings:
 /pagenumstr (1) def
-/moddatestr (06/07/23) def
-/modtimestr (12:56:00) def
+/moddatestr (06/08/23) def
+/modtimestr (13:25:48) def
 /user_header_p false def
 /user_footer_p false def
 %%EndPageSetup
@@ -1728,8 +1728,8 @@ _S
 /ftail (anexo.m) def
 % User defined strings:
 /pagenumstr (2) def
-/moddatestr (06/07/23) def
-/modtimestr (12:56:00) def
+/moddatestr (06/08/23) def
+/modtimestr (13:25:48) def
 /user_header_p false def
 /user_footer_p false def
 %%EndPageSetup
@@ -2676,23 +2676,7 @@ do_header
 /F-gs-font 7 7 SF
 0 setgray
 529 229 M
-(\() s
-/Courier-Bold 7 7 SUF
-0.133333 0.545098 0.133333 setrgbcolor
-533.2 229 M
-(pow2) s
-/F-gs-font 7 7 SF
-0 setgray
-550 229 M
-(\(dX\(t\)\) + ) s
-/Courier-Bold 7 7 SUF
-0.133333 0.545098 0.133333 setrgbcolor
-592 229 M
-(pow2) s
-/F-gs-font 7 7 SF
-0 setgray
-608.8 229 M
-(\(dY\(t\)\)\);) s
+(\(dX\(t\).^2 + dY\(t\).^2\);) s
 411.4 221 M (225:) s
 432.4 221 M
 (    ) s
@@ -2706,211 +2690,197 @@ do_header
 ( long;) s
 411.4 213 M (226:) s
 432.4 213 M
-(    intvalue = intNCcompuesta\(longarc,0,6,60000,3\);) s
+(    last= 1; intvalue=0;) s
 411.4 205 M (227:) s
+432.4 205 M
+(    count = 10;) s
+411.4 197 M (228:) s
+432.4 197 M
+(    ) s
 /Courier-Bold 7 7 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-432.4 205 M
+449.2 197 M
+(while) s
+/F-gs-font 7 7 SF
+0 setgray
+470.2 197 M
+( true) s
+411.4 189 M (229:) s
+432.4 189 M
+(        count = 2*count;) s
+411.4 181 M (230:) s
+432.4 181 M
+(        last = intNCcompuesta\(longarc,0,6,count,2\);) s
+411.4 173 M (231:) s
+432.4 173 M
+(        count++;) s
+411.4 165 M (232:) s
+432.4 165 M
+(        intvalue = intNCcompuesta\(longarc,0,6,count,2\);) s
+411.4 157 M (233:) s
+432.4 157 M
+(        ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+466 157 M
+(if) s
+/F-gs-font 7 7 SF
+0 setgray
+474.4 157 M
+(\() s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+478.6 157 M
+(abs) s
+/F-gs-font 7 7 SF
+0 setgray
+491.2 157 M
+(\(last-intvalue\) < 1e-6\)) s
+411.4 149 M (234:) s
+432.4 149 M
+(          ) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+474.4 149 M
+(break) s
+/F-gs-font 7 7 SF
+0 setgray
+495.4 149 M
+(;) s
+411.4 141 M (235:) s
+432.4 141 M
+(        endif) s
+411.4 133 M (236:) s
+432.4 133 M
+(    endwhile) s
+411.4 125 M (237:) s
+432.4 125 M
+(    intvalue;) s
+411.4 117 M (238:) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+432.4 117 M
 (end) s
 /F-gs-font 7 7 SF
 0 setgray
-411.4 197 M (228:) s
-411.4 189 M (229:) s
-411.4 181 M (230:) s
+411.4 109 M (239:) s
+411.4 101 M (240:) s
+411.4 93 M (241:) s
 /Courier-Bold 7 7 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-432.4 181 M
+432.4 93 M
 (function) s
 /F-gs-font 7 7 SF
 0 setgray
-466 181 M
+466 93 M
 ( w = pesosNC\(n\)) s
-411.4 173 M (231:) s
+411.4 85 M (242:) s
 /Courier-Oblique 7 7 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-432.4 173 M
+432.4 85 M
 (% function w = pesosNC\(n\)) s
 /F-gs-font 7 7 SF
-411.4 165 M (232:) s
+411.4 77 M (243:) s
 /Courier-Oblique 7 7 SUF
 /F-gs-font 7 7 SF
 0 setgray
 /Courier-Oblique 7 7 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-432.4 165 M
+432.4 77 M
 (% se calculan los pesos) s
 /F-gs-font 7 7 SF
-411.4 157 M (233:) s
+411.4 69 M (244:) s
 /Courier-Oblique 7 7 SUF
 /F-gs-font 7 7 SF
 0 setgray
 /Courier-Oblique 7 7 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-432.4 157 M
+432.4 69 M
 (% de la formula de Newton-Cotes de n puntos) s
 /F-gs-font 7 7 SF
-411.4 149 M (234:) s
+411.4 61 M (245:) s
 /Courier-Oblique 7 7 SUF
 /F-gs-font 7 7 SF
 0 setgray
-411.4 141 M (235:) s
-432.4 141 M
+411.4 53 M (246:) s
+432.4 53 M
 (x = ) s
 /Courier-Bold 7 7 SUF
 0.133333 0.545098 0.133333 setrgbcolor
-449.2 141 M
+449.2 53 M
 (linspace) s
 /F-gs-font 7 7 SF
 0 setgray
-482.8 141 M
+482.8 53 M
 (\(0,1,n\);) s
-411.4 133 M (236:) s
-432.4 133 M
+411.4 45 M (247:) s
+432.4 45 M
 (A = ) s
 /Courier-Bold 7 7 SUF
 0.133333 0.545098 0.133333 setrgbcolor
-449.2 133 M
+449.2 45 M
 (ones) s
 /F-gs-font 7 7 SF
 0 setgray
-466 133 M
+466 45 M
 (\(n,n\);) s
-411.4 125 M (237:) s
+411.4 37 M (248:) s
 /Courier-Bold 7 7 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-432.4 125 M
+432.4 37 M
 (for) s
 /F-gs-font 7 7 SF
 0 setgray
-445 125 M
+445 37 M
 ( ) s
 /Courier-Bold 7 7 SUF
 0.133333 0.545098 0.133333 setrgbcolor
-449.2 125 M
+449.2 37 M
 (i) s
 /F-gs-font 7 7 SF
 0 setgray
-453.4 125 M
+453.4 37 M
 (=2:n) s
-411.4 117 M (238:) s
-432.4 117 M
+411.4 29 M (249:) s
+432.4 29 M
 (A\() s
 /Courier-Bold 7 7 SUF
 0.133333 0.545098 0.133333 setrgbcolor
-440.8 117 M
+440.8 29 M
 (i) s
 /F-gs-font 7 7 SF
 0 setgray
-445 117 M
+445 29 M
 (,:\) = A\() s
 /Courier-Bold 7 7 SUF
 0.133333 0.545098 0.133333 setrgbcolor
-478.6 117 M
+478.6 29 M
 (i) s
 /F-gs-font 7 7 SF
 0 setgray
-482.8 117 M
+482.8 29 M
 (-1,:\) .* x;) s
-411.4 109 M (239:) s
+411.4 21 M (250:) s
 /Courier-Bold 7 7 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-432.4 109 M
+432.4 21 M
 (end) s
 /F-gs-font 7 7 SF
 0 setgray
-411.4 101 M (240:) s
-432.4 101 M
+411.4 13 M (251:) s
+432.4 13 M
 (b = 1./\(1:n\)) s
 /Courier-Bold 7 7 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-482.8 101 M
+482.8 13 M
 (') s
 /F-gs-font 7 7 SF
 0 setgray
-487 101 M
+487 13 M
 (;) s
-411.4 93 M (241:) s
-432.4 93 M
-(w = A\\b;) s
-411.4 85 M (242:) s
-/Courier-Bold 7 7 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-432.4 85 M
-(end) s
-/F-gs-font 7 7 SF
-0 setgray
-411.4 77 M (243:) s
-411.4 69 M (244:) s
-/Courier-Bold 7 7 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-432.4 69 M
-(function) s
-/F-gs-font 7 7 SF
-0 setgray
-466 69 M
-( Q = intNCcompuesta\(f,a,b,L,n\)) s
-411.4 61 M (245:) s
-/Courier-Oblique 7 7 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-432.4 61 M
-(% function Q = intNCcompuesta\(f,a,b,L,n\)) s
-/F-gs-font 7 7 SF
-411.4 53 M (246:) s
-/Courier-Oblique 7 7 SUF
-/F-gs-font 7 7 SF
-0 setgray
-/Courier-Oblique 7 7 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-432.4 53 M
-(% aproxima la integral de f sobre [a,b]) s
-/F-gs-font 7 7 SF
-411.4 45 M (247:) s
-/Courier-Oblique 7 7 SUF
-/F-gs-font 7 7 SF
-0 setgray
-/Courier-Oblique 7 7 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-432.4 45 M
-(% utilizando la formula de Newton-Cotes compuesta) s
-/F-gs-font 7 7 SF
-411.4 37 M (248:) s
-/Courier-Oblique 7 7 SUF
-/F-gs-font 7 7 SF
-0 setgray
-/Courier-Oblique 7 7 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-432.4 37 M
-(% de n puntos, subdividiendo en L subintervalos) s
-/F-gs-font 7 7 SF
-411.4 29 M (249:) s
-/Courier-Oblique 7 7 SUF
-/F-gs-font 7 7 SF
-0 setgray
-432.4 29 M
-(y = ) s
-/Courier-Bold 7 7 SUF
-0.133333 0.545098 0.133333 setrgbcolor
-449.2 29 M
-(linspace) s
-/F-gs-font 7 7 SF
-0 setgray
-482.8 29 M
-(\(a,b,L+1\);) s
-411.4 21 M (250:) s
-432.4 21 M
-(h = \(b-a\)/L;) s
-411.4 13 M (251:) s
-/Courier-Oblique 7 7 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-432.4 13 M
-(% calculamos los pesos una sola vez) s
-/F-gs-font 7 7 SF
 411.4 5 M (252:) s
-/Courier-Oblique 7 7 SUF
-/F-gs-font 7 7 SF
-0 setgray
 432.4 5 M
-(w = pesosNC\(n\);) s
+(w = A\\b;) s
 _R
 S
 %%Page: (3) 3
@@ -2924,77 +2894,156 @@ _S
 /ftail (anexo.m) def
 % User defined strings:
 /pagenumstr (3) def
-/moddatestr (06/07/23) def
-/modtimestr (12:56:00) def
+/moddatestr (06/08/23) def
+/modtimestr (13:25:48) def
 /user_header_p false def
 /user_footer_p false def
 %%EndPageSetup
 column_lines
 do_header
 14.4 501 M (253:) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
 35.4 501 M
-(Q = 0;) s
-14.4 493 M (254:) s
-/Courier-Bold 7 7 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-35.4 493 M
-(for) s
-/F-gs-font 7 7 SF
-0 setgray
-48 493 M
-( ) s
-/Courier-Bold 7 7 SUF
-0.133333 0.545098 0.133333 setrgbcolor
-52.2 493 M
-(i) s
-/F-gs-font 7 7 SF
-0 setgray
-56.4 493 M
-(=1:L) s
-14.4 485 M (255:) s
-35.4 485 M
-(x = ) s
-/Courier-Bold 7 7 SUF
-0.133333 0.545098 0.133333 setrgbcolor
-52.2 485 M
-(linspace) s
-/F-gs-font 7 7 SF
-0 setgray
-85.8 485 M
-(\(y\() s
-/Courier-Bold 7 7 SUF
-0.133333 0.545098 0.133333 setrgbcolor
-98.4 485 M
-(i) s
-/F-gs-font 7 7 SF
-0 setgray
-102.6 485 M
-(\),y\() s
-/Courier-Bold 7 7 SUF
-0.133333 0.545098 0.133333 setrgbcolor
-119.4 485 M
-(i) s
-/F-gs-font 7 7 SF
-0 setgray
-123.6 485 M
-(+1\),n\);) s
-14.4 477 M (256:) s
-35.4 477 M
-(fx = f\(x\);) s
-14.4 469 M (257:) s
-35.4 469 M
-(Q = Q + h*\(fx*w\);) s
-14.4 461 M (258:) s
-/Courier-Bold 7 7 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-35.4 461 M
 (end) s
 /F-gs-font 7 7 SF
 0 setgray
-14.4 453 M (259:) s
+14.4 493 M (254:) s
+14.4 485 M (255:) s
 /Courier-Bold 7 7 SUF
 0.627451 0.12549 0.941176 setrgbcolor
+35.4 485 M
+(function) s
+/F-gs-font 7 7 SF
+0 setgray
+69 485 M
+( Q = intNCcompuesta\(f,a,b,L,n\)) s
+14.4 477 M (256:) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 477 M
+(% function Q = intNCcompuesta\(f,a,b,L,n\)) s
+/F-gs-font 7 7 SF
+14.4 469 M (257:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 469 M
+(% aproxima la integral de f sobre [a,b]) s
+/F-gs-font 7 7 SF
+14.4 461 M (258:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 461 M
+(% utilizando la formula de Newton-Cotes compuesta) s
+/F-gs-font 7 7 SF
+14.4 453 M (259:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
 35.4 453 M
+(% de n puntos, subdividiendo en L subintervalos) s
+/F-gs-font 7 7 SF
+14.4 445 M (260:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+35.4 445 M
+(y = ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 445 M
+(linspace) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 445 M
+(\(a,b,L+1\);) s
+14.4 437 M (261:) s
+35.4 437 M
+(h = \(b-a\)/L;) s
+14.4 429 M (262:) s
+/Courier-Oblique 7 7 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+35.4 429 M
+(% calculamos los pesos una sola vez) s
+/F-gs-font 7 7 SF
+14.4 421 M (263:) s
+/Courier-Oblique 7 7 SUF
+/F-gs-font 7 7 SF
+0 setgray
+35.4 421 M
+(w = pesosNC\(n\);) s
+14.4 413 M (264:) s
+35.4 413 M
+(Q = 0;) s
+14.4 405 M (265:) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+35.4 405 M
+(for) s
+/F-gs-font 7 7 SF
+0 setgray
+48 405 M
+( ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 405 M
+(i) s
+/F-gs-font 7 7 SF
+0 setgray
+56.4 405 M
+(=1:L) s
+14.4 397 M (266:) s
+35.4 397 M
+(x = ) s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+52.2 397 M
+(linspace) s
+/F-gs-font 7 7 SF
+0 setgray
+85.8 397 M
+(\(y\() s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+98.4 397 M
+(i) s
+/F-gs-font 7 7 SF
+0 setgray
+102.6 397 M
+(\),y\() s
+/Courier-Bold 7 7 SUF
+0.133333 0.545098 0.133333 setrgbcolor
+119.4 397 M
+(i) s
+/F-gs-font 7 7 SF
+0 setgray
+123.6 397 M
+(+1\),n\);) s
+14.4 389 M (267:) s
+35.4 389 M
+(fx = f\(x\);) s
+14.4 381 M (268:) s
+35.4 381 M
+(Q = Q + h*\(fx*w\);) s
+14.4 373 M (269:) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+35.4 373 M
+(end) s
+/F-gs-font 7 7 SF
+0 setgray
+14.4 365 M (270:) s
+/Courier-Bold 7 7 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+35.4 365 M
 (end) s
 /F-gs-font 7 7 SF
 0 setgray
