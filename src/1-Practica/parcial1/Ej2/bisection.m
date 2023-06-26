@@ -25,8 +25,7 @@ function [point,it,t] = bisection(f_x,x0,x1,tolX,maxIt)
       it = it + 1;
     endwhile
     t = toc();
-    dx = abs(x0-x1);
-    plotFunction(f_x,x0-5*dx,x1+5*dx,100,1)
+    %plotFunction(f_x,x0-5,x1+5,100,1)
     plotDots([ f_x(point) point ], 1 );
     
 end
