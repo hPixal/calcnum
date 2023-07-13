@@ -11,9 +11,9 @@ function res = Ej1()
     rob = [ A B C ];
 
     lon = 5; tol = 1e-4;
-    ycd = 6; inter = [ 0 lon/2 ];
+    ycd = 6; inter = [ 0 lon ];
     h = 0.5; L = abs(inter(1) - inter(end))/h;
-    midpoint = abs(inter(1)-inter(end))/2;
+    midpoint = abs(inter(1)-inter(end))/2
 
     cR = @(x) 0.5*x + 0.5; hSource = @(x) 5.*x.*(5-x)
     f = @(x) [ 0*x cR(x)./k0 -hSource(x)./k0 ]
@@ -42,6 +42,30 @@ function res = Ej1()
 
     lerp([y x])
 
+    dxPast = y(1,1);
+    clear y; clear x; it = 1; tol2 = 1e-2;
+    
+
+    for i = 1 : 1 : 10000
+
+        L*=2;
+        
+        [x,y] = dif_fin_rob(f,inter,ycd,rob,L);
+
+        h = (abs((inter(end)-inter(1)))/L);
+        dxPresent = (y(p+1) - y(p))/h;
+
+        err = abs(dxPast - dxPresent);
+        if(err < tol2 )
+            break;
+        endif
+
+        dxPast = dxPresent;
+    endfor
+
+
     disp("Punto medio de la barra: ")
     present
+    disp("Derivada del punto inicial de la barra: ")
+    -k0*dxPresent
 end
